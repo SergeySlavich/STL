@@ -10,21 +10,13 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-//STL:
-//https://legacy.cplusplus.com/reference/stl/
-//1. Разобраться с forward_list;
-//2. Написать словарь, в котором каждому английскому слову соответствует несколько вариантов перевода на русский,
-//	например:
-//		Space - пробел, пространство, космос;
-//		Set - задать, установить, набор;
-//		Call - звонок, вызов, назвать;
-
+//TODO:
+//1. Добавить в Вектор значение по индексу;
+//2. удалить из Вектора значение по индексу;
 
 
 #define tab "\t"
 #define delimiter "\n--------------------------\n"
-
-//https://legacy.cplusplus.com/reference/stl/
 
 template<typename T>void vector_properties(const std::vector<T>& vec)
 {
@@ -34,10 +26,9 @@ template<typename T>void vector_properties(const std::vector<T>& vec)
 }
 
 //#define STL_ARRAY
-//#define STL_VECTOR
+#define STL_VECTOR
 //#define STL_DEQUE
 //#define STL_LIST
-#define HOME_WORK_STL_1
 
 void main()
 {
@@ -98,12 +89,10 @@ void main()
 	vector_properties(vec2);
 
 	int index;
-	int count;
 	int value;
 	cout << "Input index adding element: "; cin >> index;
-	cout << "Input count adding element: "; cin >> count;
 	cout << "Input value adding element: "; cin >> value;
-	vec.insert(vec.begin() + index, count, value);
+	vec.insert(vec.begin() + index, value);
 	for (int i : vec) cout << i << tab; cout << endl;
 
 #endif // STL_VECTOR
@@ -149,47 +138,4 @@ void main()
 	for (int i : list)cout << i << tab; cout << endl;
 #endif // STL_LIST
 
-#ifdef HOME_WORK_STL_1
-	//1. Разобраться с forward_list;
-	//2. Написать словарь, в котором каждому английскому слову соответствует несколько вариантов перевода на русский,
-	std::multimap<std::string, std::string> dictionary =
-	{
-		{"Space", "Пробел"},
-		{"Space", "Пространство"},
-		{"Space", "Космос"},
-		{"Set", "Задать"},
-		{"Set", "Установить"},
-		{"Set", "Набор"},
-		{"Call", "Звонок"},
-		{"Call", "Вызвать"},
-		{"Call", "Назвать"},
-		{"Mine", "Мой"},
-		{"Mine", "Шахта"},
-		{"Mine", "Мина"},
-		{"Bolt", "Болт"},
-		{"Bolt", "Вспышка молнии"},
-		{"Bolt", "Быстро (внезапно) бежать"},
-		{"Draft", "Сквозняк"},
-		{"Draft", "Проект, черновик"},
-		{"Draft", "Призыв (в армию)"},
-		{"Squash", "Овощи семейства тыквенных"},
-		{"Squash", "Игра с ракетками и мячами"},
-		{"Squash", "Раздавить"}
-	};
-	for (std::multimap<std::string, std::string>::iterator it = dictionary.begin(); it != dictionary.end(); ++it)
-	{
-		cout << it->first << endl;
-		if (it->first == (++it)->first) ++it;
-	}
-	std::string keyword;
-	cout << "input word for output value: "; cin >> keyword;
-	cout << endl;
-	for (std::multimap<std::string, std::string>::iterator it = dictionary.begin(); it != dictionary.end(); ++it)
-	{
-		if (it->first == keyword)
-		{
-			cout << it->first << " - " << it->second << endl;
-		}
-	}
-#endif
 }
